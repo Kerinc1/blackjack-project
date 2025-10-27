@@ -1,0 +1,27 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build Blackjack (g++)",
+      "type": "cppbuild",
+      "command": "/usr/bin/g++",
+      "args": [
+        "-std=c++17",
+        "-Wall",
+        "-g",
+        "${workspaceFolder}/*.cpp",
+        "-o",
+        "${workspaceFolder}/blackjack"
+      ],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "problemMatcher": ["$gcc"],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Compila todo el proyecto Blackjack usando g++"
+    }
+  ]
+}
