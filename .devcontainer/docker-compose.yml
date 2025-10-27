@@ -1,0 +1,19 @@
+version: '3.8'
+services:
+  # Nombre del servicio que usará el devcontainer.json
+  cpp-dev:
+    # Imagen base de Microsoft para desarrollo en C++.
+    # Ya incluye build-essential, g++, gdb, cmake, make, etc.
+    image: mcr.microsoft.com/devcontainers/cpp:latest
+
+    volumes:
+      # Monta la carpeta raíz de tu proyecto (..) en el contenedor
+      # en la ruta /workspaces/[nombre-de-tu-carpeta-de-proyecto]
+      - ..:/workspaces/blackJack
+
+    # Mantiene el contenedor vivo para que puedas conectarte a él
+    command: sleep infinity
+
+    # (Opcional) Limita la memoria si es necesario
+    # mem_limit: 2g
+    # cpus: 2
