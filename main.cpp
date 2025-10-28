@@ -15,10 +15,10 @@
 #include <string>       
 #include <cstdlib>      
 
+#include "Juego.h"
+#include "Jugador.h"
 
 using namespace std;
-
-
 
 void clearConsole() {
     #ifdef _WIN32
@@ -30,23 +30,16 @@ void clearConsole() {
 
 void waitForKeyPress() {
     cout << "\nPresione Enter para continuar...";
-    // Espera a que el usuario presione Enter
-    // Se limpia el buffer primero por si había entradas previas
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cin.get();
 }
 
 // --- Función Principal ---
-
 int main() {
-
     int choice;
 
-
-
-    
     while (true) {
-        clearConsole(); 
+        clearConsole();
 
         cout << "  ____  _            _     _            _    \n";
         cout << " |  _ \\| |          | |   | |          | |   \n";
@@ -62,28 +55,59 @@ int main() {
 
         cin >> choice;
 
-        // --- Manejo de entrada no válida (si el usuario escribe "abc") ---
+        // Manejo de entrada no válida
         if (cin.fail()) {
-            cin.clear(); // Limpia el estado de error de cin
-            choice = 0;  // Asigna una opción no válida para ir al 'default'
+            cin.clear();
+            choice = 0;
         }
-        // Descarta cualquier entrada extra en la línea 
         cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-        // --- Procesar la elección del usuario ---
         switch (choice) {
-        case 1:
-            // JUGAR NUEVA RONDA
-            
-            waitForKeyPress(); // Pausa para que el usuario vea los resultados de la ronda
+        case 1: {
+            // === JUGAR NUEVA RONDA ===
+            clearConsole();
+            cout << "=== NUEVA RONDA DE BLACKJACK ===\n\n";
+
+            // Crear el juego y el jugador
+            Juego juego;
+            Jugador jugador(21);
+
+            // Barajar el mazo antes de repartir
+            juego.barajarMazo();
+
+            // Dar 2 cartas iniciales al jugador
+            jugador.obtenerCarta(juego.obtenerSiguenteCarta());
+            jugador.obtenerCarta(juego.obtenerSiguenteCarta());
+
+            // Mostrar mano inicial
+            jugador.mostrarMano();
+
+            // Lógica simple de pedir más cartas
+            while (jugador.masCartas()) {
+                char opcion;
+                cout << "\n¿Desea otra carta? (s/n): ";
+                cin >> opcion;
+
+                if (opcion == 's' || opcion == 'S') {
+                    jugador.obtenerCarta(juego.obtenerSiguenteCarta());
+                    jugador.mostrarMano();
+                } else {
+                    break;
+                }
+            }
+
+            cout << "\nRonda terminada.\n";
+            waitForKeyPress();
             break;
+        }
+
         case 2:
-           
             cout << "Gracias por jugar Blackjack. ¡Vuelve pronto!" << endl;
-            return 0; // Termina el programa
+            return 0;
+
         default:
             cout << "Opción no válida. Inténtalo de nuevo.\n";
-            waitForKeyPress(); 
+            waitForKeyPress();
             break;
         }
     }
