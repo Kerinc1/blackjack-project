@@ -50,13 +50,9 @@ int main() {
     while (true) {
         clearConsole(); 
 
-        cout << "  ____  _            _     _            _    \n";
-        cout << " |  _ \\| |          | |   | |          | |   \n";
-        cout << " | |_) | | __ _  ___| | __| | __ _  ___| | __\n";
-        cout << " |  _ <| |/ _` |/ __| |/ _` |/ _` |/ __| |/ /\n";
-        cout << " | |_) | | (_| | (__| | (_| | (_| | (__|   < \n";
-        cout << " |____/|_|\\__,_|\\___|_|\\__,_|\\__,_|\\___|_|\\_\\ \n";
-        cout << "\n==================================================\n\n";
+        cout << "╔══════════════════════╗" << std::endl;
+        cout << "║      BLACKJACK       ║" << std::endl;
+        cout << "╚══════════════════════╝" << std::endl;
 
         cout << "1. Jugar Nueva Ronda\n";
         cout << "2. Salir del Juego\n";
@@ -79,19 +75,6 @@ int main() {
             clearConsole();
             cout << "--- Nueva Ronda de Blackjack ---\n";
 
-            // Crear cartas de ejemplo (pueden reemplazarse luego por aleatorias)
-            Carta c1("As", 11, "Corazones");
-            Carta c2("Rey", 10, "Picas");
-
-            // Crear la mano del jugador y agregar las cartas
-            Mano manoJugador;
-            manoJugador.agregarAMano(c1);
-            manoJugador.agregarAMano(c2);
-
-            // Mostrar la mano y su valor total
-            manoJugador.mostrarMano();
-            waitForKeyPress(); // Pausa para que el usuario vea los resultados de la ronda
-            break;
         }
         case 2:
            
