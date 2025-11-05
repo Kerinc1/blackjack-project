@@ -13,7 +13,9 @@
 #include <iostream>     
 #include <limits>       
 #include <string>       
-#include <cstdlib>      
+#include <cstdlib>  
+#include "Carta.h"
+#include "Mano.h"    
 
 
 using namespace std;
@@ -72,11 +74,25 @@ int main() {
 
         // --- Procesar la elección del usuario ---
         switch (choice) {
-        case 1:
+        case 1: {
             // JUGAR NUEVA RONDA
-            
+            clearConsole();
+            cout << "--- Nueva Ronda de Blackjack ---\n";
+
+            // Crear cartas de ejemplo (pueden reemplazarse luego por aleatorias)
+            Carta c1("As", 11, "Corazones");
+            Carta c2("Rey", 10, "Picas");
+
+            // Crear la mano del jugador y agregar las cartas
+            Mano manoJugador;
+            manoJugador.agregarAMano(c1);
+            manoJugador.agregarAMano(c2);
+
+            // Mostrar la mano y su valor total
+            manoJugador.mostrarMano();
             waitForKeyPress(); // Pausa para que el usuario vea los resultados de la ronda
             break;
+        }
         case 2:
            
             cout << "Gracias por jugar Blackjack. ¡Vuelve pronto!" << endl;
