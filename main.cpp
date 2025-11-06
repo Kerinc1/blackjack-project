@@ -19,9 +19,9 @@
 #include <cstdlib>  
 #include "Carta.h"
 #include "Mano.h"    
-
 #include "Juego.h"
 #include "Jugador.h"
+#include "Crupier.h" 
 
 using namespace std;
 
@@ -39,7 +39,7 @@ void waitForKeyPress() {
     cin.get();
 }
 
-// --- Función Principal ---
+
 int main() {
     int choice;
 
@@ -72,18 +72,24 @@ int main() {
             // Crear el juego y el jugador
             Juego juego;
             Jugador jugador(21);
+            Jugador manoCrupier(21);
+            Crupier crupier(juego);
 
-            // Barajar el mazo antes de repartir
-            juego.barajarMazo();
 
-            // Dar 2 cartas iniciales al jugador
+            crupier.EmpezarNuevoJuego();
+
+            // --- Repartir Cartas Iniciales ---
+            // cartas al jugador
             jugador.obtenerCarta(juego.obtenerSiguenteCarta());
             jugador.obtenerCarta(juego.obtenerSiguenteCarta());
 
-            // Mostrar mano inicial
+            // cartas al crupier
+            manoCrupier.obtenerCarta(juego.obtenerSiguenteCarta());
+            manoCrupier.obtenerCarta(juego.obtenerSiguenteCarta());
+
+
             jugador.mostrarMano();
 
-            // Lógica simple de pedir más cartas
             while (jugador.masCartas()) {
                 char opcion;
                 cout << "\n¿Desea otra carta? (s/n): ";
@@ -95,6 +101,29 @@ int main() {
                 } else {
                     break;
                 }
+            }
+
+            clearConsole();
+            cout << "=================================\n";
+            cout << "===   RESULTADOS DE LA RONDA  ===\n";
+            cout << "=================================\n\n";
+
+            int puntajeJugador = jugador.obtenerElValorDeLaCarta(); 
+            cout << "Tu puntaje final: " << puntajeJugador << endl;
+
+            // Obtener puntaje del crupier 
+            int puntajeCrupier = manoCrupier.obtenerElValorDeLaCarta();
+            cout << "Puntaje final del Crupier: " << puntajeCrupier << endl;
+
+            // Comparar
+            if (puntajeJugador > 21) {
+                cout << "Te pasaste. Gana el Crupier." << endl;
+            } else if (puntajeCrupier > 21) {
+                cout << "El Crupier se pasó. ¡Ganas!" << endl;
+            } else if (puntajeJugador > puntajeCrupier) {
+                cout << "¡Ganas!" << endl;
+            } else {
+                cout << "Gana el Crupier." << endl;
             }
 
             cout << "\nRonda terminada.\n";
