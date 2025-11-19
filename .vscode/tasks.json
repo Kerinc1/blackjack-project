@@ -9,6 +9,14 @@
         "-std=c++17",
         "-Wall",
         "-g",
+        "-I${workspaceFolder}/models",
+        "-I${workspaceFolder}/views",
+        "-I${workspaceFolder}/controllers",
+
+        "${workspaceFolder}/models/*.cpp",
+        "${workspaceFolder}/views/*.cpp",
+        "${workspaceFolder}/controllers/*.cpp",
+
         "${workspaceFolder}/*.cpp",
         "-o",
         "${workspaceFolder}/blackjack"

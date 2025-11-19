@@ -3,21 +3,17 @@
 
 #include <vector>
 #include "Carta.h"
-using namespace std;
 
 class Mano {
 private:
-    vector<Carta> cartas;
-    int valorTotal;
+    std::vector<Carta> cartas;
 
 public:
     Mano();
-
     void agregarAMano(const Carta& carta);
-    int obtenerValor() const;
+    int calcularValor() const; // Cambiamos nombre a calcularValor para ser más claros
     void mostrarMano() const;
     void limpiarMano();
 };
 
 #endif
-

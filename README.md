@@ -50,11 +50,25 @@ g++ -std=c++17 *.cpp -o blackjack
 ```
 
 ## Estructura del proyecto
-- Carta.h / Carta.cpp
-- Mano.h / Mano.cpp
-- Juego.h / Juego.cpp
-- Jugador.h / Jugador.cpp
-- Crupier.h / Crupier.cpp
+├── models/
+│   ├── Carta.h
+│   ├── Carta.cpp
+│   ├── Crupier.h
+│   ├── Crupier.cpp
+│   ├── Juego.h
+│   ├── Juego.cpp
+│   ├── Jugador.h
+│   ├── Jugador.cpp
+│   ├── Mano.h
+│   ├── Mano.cpp
+│   ├── Participante.h
+│   └── Participante.cpp
+├── views/
+│   ├── GameView.h
+│   └── GameView.cpp
+└── controllers/
+    ├── GameController.h
+    └── GameController.cpp
 - main.cpp
 - .vscode/ (launch.json, tasks.json)
 - README.md
