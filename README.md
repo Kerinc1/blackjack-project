@@ -29,25 +29,61 @@ Pequeño juego de Blackjack desarrollado como proyecto del curso Fundamentos de 
 
 ## Compilar y ejecutar
 
-Opción A — Usando VS Code (F5)
-- Presiona F5 para compilar y ejecutar usando la configuración de lanzamiento (`.vscode/launch.json`) y las tareas definidas (`.vscode/tasks.json`).
+### Opción A — Usando VS Code (F5) - Recomendado
+- Presiona **F5** para compilar y ejecutar usando la configuración de lanzamiento (`.vscode/launch.json`) y las tareas definidas (`.vscode/tasks.json`).
 
-Opción B — Línea de comando con CMake (desde el contenedor)
+### Opción B — Línea de comando con CMake (desde el contenedor)
 ```bash
 # desde la raíz del proyecto
 mkdir -p build
 cd build
 cmake ..
 make
-./blackjack   # o el nombre del ejecutable configurado
-```
-
-Opción C — Compilación rápida con g++
-```bash
-# desde la raíz del proyecto (compila todos los .cpp del directorio)
-g++ -std=c++17 *.cpp -o blackjack
 ./blackjack
 ```
+
+### Opción C — Compilación rápida con g++ (alternativa)
+```bash
+# desde la raíz del proyecto
+g++ -std=c++17 -Wall -g \
+  -I./models -I./views -I./controllers \
+  models/*.cpp views/*.cpp controllers/*.cpp *.cpp \
+  -o blackjack
+./blackjack
+```
+
+### Opción D — Usando la tarea de VS Code
+1. Abre la paleta de comandos: **Ctrl+Shift+P**
+2. Busca y selecciona: **"Tasks: Run Task"**
+3. Selecciona: **"Build Blackjack (g++)"**
+
+---
+
+## Compilar y ejecutar las pruebas unitarias
+
+### Pruebas con Google Test (112 pruebas)
+```bash
+cd /workspaces/blackJack/build
+ctest --verbose
+```
+
+O ejecutar suites específicas:
+```bash
+./test_carta
+./test_mano
+./test_participante
+./test_jugador
+./test_juego
+./test_crupier
+```
+
+### Ejemplo de pruebas con Assert
+```bash
+cd /workspaces/blackJack
+./examples_assert
+```
+
+Para más información sobre las pruebas, ver [TEST_README.md](TEST_README.md)
 
 ## Estructura del proyecto
 ├── models/
@@ -76,5 +112,7 @@ g++ -std=c++17 *.cpp -o blackjack
 ## Problemas comunes
 - Si F5 no compila: abre la pestaña "Terminal" → ejecuta la tarea de compilación manualmente o usa los comandos de CMake indicados arriba.
 - Errores de enlace: verifica que todos los .cpp estén incluidos en la compilación.
+- Si las pruebas no compilan: `sudo apt-get install libgtest-dev cmake`
 
----
+## Contribuciones
+Este es un proyecto académico del curso FPOO. Para contribuciones o mejoras, por favor abrir un issue o pull request.

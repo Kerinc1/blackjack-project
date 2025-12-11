@@ -1,0 +1,68 @@
+# Ignora carpetas de compilación y dependencias
+build/
+cmake-build-debug/
+cmake-build-release/
+dist/
+out/
+
+# Archivos objeto de compilación
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dylib
+*.dll
+*.exe
+
+# Archivos ejecutables
+blackjack
+test_*
+examples_assert
+
+# Archivos temporales del compilador
+*.dSYM/
+*.su
+*.gch
+*.pch
+
+# Carpetas temporales
+.vscode/
+.idea/
+.DS_Store
+.swp
+*~
+.~
+
+# Archivos de log
+*.log
+cmake_install.cmake
+CMakeCache.txt
+CMakeFiles/
+Makefile
+
+# Dependencias externas
+googletest/
+gtest/
+
+# Binarios generados
+bin/
+lib/
+
+# Archivos de VS Code
+*.code-workspace
+
+# Archivos de depuración
+*.pdb
+*.ilk
+*.exp
+
+# Archivos generados por CMake
+install_manifest.txt
+CTest*
+Testing/
+
+# Archivos de configuración del IDE
+*.sln
+*.vcxproj*
+*.cbp
