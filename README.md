@@ -11,6 +11,8 @@
            Jhonny Alexander Moreno Florez - 2522112
 
     Fecha: Octubre/noviembre 2025
+
+    Documentacion con diagrama UML: https://docs.google.com/document/d/1iQocQrA-XeeELrB_uSv11bBXjx8a_oVMnm8RWYw06U4/edit?tab=t.0#heading=h.k2svcvltjz2t
 */
 
 # Blackjack (Proyecto FPOO)
